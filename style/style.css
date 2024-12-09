@@ -1,0 +1,60 @@
+@import url("./font.css");
+
+#mainContainer {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width:100vw;
+  height:100vh;
+  gap:20px;
+}
+
+.main-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+#SearchArea {
+  display:flex;
+  justify-content: center;
+  padding:15px 20px;
+  border: 5px solid #0070AF;
+  border-radius: 50px;
+  width:500px;
+}
+
+#SearchBox {
+  font-size: 1rem;
+  width: 350px;
+  border: 0px;
+  margin-right:20px;
+  border-radius: 4px;
+}
+
+#SearchBox:focus{
+  border:0;
+  outline: 0;
+  box-shadow:0 0 8px 0 #0070AF;
+}
+
+#searchBtn {
+  padding: 1rem 1rem;
+  border: none;
+  background : url('../img/magnifying-glass-solid.svg') no-repeat center / contain;
+  cursor: pointer;
+  font-size:0px;
+}
+
+.MainLogo{
+  font-size:3em;
+  font-family: 'NanumSquareNeoExtraBold';
+  color:#0070AF;
+}       
+
+.MainLogo span{
+  color:#fcb131;
+}
+#searchButton:hover {
+  background-color: #0056b3;
+}
