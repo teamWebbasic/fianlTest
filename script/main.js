@@ -1,12 +1,16 @@
 import config from '../config/apiKey.js';
 
 const APIKEY = config.key;
-const button = document.querySelector(`#searchBtn`);
-const searchBox = document.querySelector(`#SearchBox`);
 const results = JSON.parse(localStorage.getItem(`searchResults`));
 
+// dom var
+const button = document.querySelector(`#searchBtn`);
+const searchBox = document.querySelector(`#SearchBox`);
+const noKeyword = document.querySelector('#nonKeywordDialog');
+const btnCloseDialog = document.querySelector('.diaClose');  
+
 const getPixa = async(keyWord) => {
-    
+    // API 호출 및 ajax로 검색어 및 결과 넘겨주기
     try{
         const response = await fetch(
             `https://pixabay.com/api/?key=${APIKEY}&q=${keyWord}&image_type=photo`
@@ -24,6 +28,7 @@ const getPixa = async(keyWord) => {
     }
 }
 
+// serachResult 페이지 화면 내용 뿌려주기
 function displayResults(result) {
     const resultArea = document.querySelector(`#DisplayListArea .imgList`);
     
@@ -50,12 +55,26 @@ document.querySelector('#SearchArea').addEventListener('submit', function(e) {
   
 
 button.addEventListener('click', ()=>{
-    const keyWord = searchBox.value.trim();
+    const keyWord = searchBox.value.trim(); // 검색어의 양끝 공백 제거
     
     if(!keyWord){
-        alert('검색어를 입력해주세요!');
+        // alert 으로 간단하게 해결 할 수 있지만 뭐든 도전해보고자 해서 dialog 이용
+        //alert('검색어를 입력해주세요!');
+        noKeyword.showModal();
         return;
     } 
     
     getPixa(keyWord);
 });
+
+noKeyword.addEventListener('click', (e) => {
+    // 버블링을 이용한 화면 밖 클릭시 닫힘 이벤트 
+    if(e.target.nodeName === 'DIALOG'){
+        noKeyword.close();
+    }
+})
+
+btnCloseDialog.addEventListener('click', () =>{
+    // 검색어 입력 경고 창 닫기
+    noKeyword.close();
+})
