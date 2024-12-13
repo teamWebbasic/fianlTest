@@ -22,6 +22,7 @@ const getPixa = async(keyWord) => {
         const result = await response.json();
         
         localStorage.setItem('searchResults', JSON.stringify(result.hits));
+        localStorage.setItem('inKeyWord', keyWord);
         window.location.href = 'searchResult.html';
     }catch(e){
         console.log(e);
@@ -34,15 +35,21 @@ function displayResults(result) {
     
     try {
         result.forEach((item) => {
+            
+            const box = document.createElement('div');
+            box.classList.add('imgItem');
+            
             const img = document.createElement('img');
             img.src = item.previewURL;
             img.alt = item.tags;
             
-            resultArea.appendChild(img);
+            box.appendChild(img);
+            
+            resultArea.appendChild(box);
         });
         
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 }
 

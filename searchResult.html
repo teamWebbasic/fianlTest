@@ -2,24 +2,38 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-compatible" content="IE-edge">
+    <meta http-equiv="X-UA-compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>폴리앨범</title>
-    <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/reset.css">
-    <script type="module" src="script/main.js"></script>
+    <link rel="stylesheet" href="style/subStyle.css">
+    <script type="module" src="script/subPage.js"></script>
 </head>
 <body>
-    <header>
-        <h1 id="h1Logo">폴리앨범</h1>
-    </header>
-    <section id="DisplayListArea">
-        <div class="">
-            
-        </div>
-        <div class="imgList">
-            
-        </div>
+    <section id="mainContainer">
+        <header>
+            <h1 id="h1Logo">폴리<span class="changeColor">앨범</span></h1>
+        </header>
+        <section id="DisplayListArea">
+            <div id="resultNsearch">
+                <h2 class="h2Tit">검색</h2>
+                <form id="reSearch">
+                    <input id="textSearch" type="text" placeholder="검색어를 입력해주세요.">
+                    <button id="searchBtn" type="button">검색</button>
+                </form>
+            </div>
+            <div class="imgList">
+                <!-- 이미지 들어갈 구역 -->
+            </div>
+            <dialog id="nonKeywordDialog">
+                <div>
+                    <h3 class="h3_warning">검색어를 입력해 주세요!</h3>
+                    <div class="bottomArea">
+                        <button class="diaClose">닫기</button>
+                    </div>
+                </div>
+            </dialog>
+        </section>
     </section>
 </body>
 </html>
